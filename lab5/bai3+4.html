@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <br>
+    <div class="container" ng-app="myapp">
+        <div ng-controller="myctrl">
+            <form action="">
+                <div class="form-group">
+                    <label for="">Họ và tên:</label>
+                    <input ng-model="student.fullname" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Ngày sinh:</label>
+                    <input ng-model="student.birthday" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Điểm:</label>
+                    <input ng-model="student.mark" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="insert()" ng-disabled="index != -1">Thêm</button>
+                    <button class="btn btn-primary" ng-click="update()" ng-disabled="index == -1">Sửa</button>
+                    <button class="btn btn-primary" ng-click="delete()" ng-disabled="index == -1">Xóa</button>
+                    <button class="btn btn-primary" ng-click="cancel()">Hủy</button>
+                    <button class="btn btn-primary" ng-click="clear()">Mới</button>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Điểm</th>
+                        <th>Xếp loại</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="st in students">
+                        <td scope="row">{{st.fullname}}</td>
+                        <td>{{st.birthday}}</td>
+                        <td>{{st.mark}}</td>
+                        <td>
+                            <span ng-if="st.mark < 5">Yếu | Kém</span>
+                            <span ng-if="st.mark >= 5 && st.mark <= 8">TB | Khá</span>
+                            <span ng-if="st.mark > 8">Giỏi | Xuất Sắc</span>
+                        </td>
+                        <td>
+                            <a href="#" ng-click="edit($index)">Sửa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("myctrl", function($scope) {
+            $scope.students = [{
+                fullname: "<NAME>",
+                birthday: "01/01/1990",
+                mark: 9
+            }]; // Thay đổi đây thành một mảng
+
+            // Các hàm xử lý dữ liệu
+            $scope.student = {}; // Thêm một sinh viên mới
+            $scope.index = -1; // Chỉ mục của sinh viên đang được sửa
+
+            $scope.clear = function() {
+                $scope.student = {};
+                $scope.index = -1;
+            }
+
+            $scope.insert = function() {
+                $scope.students.push(angular.copy($scope.student));
+                $scope.clear();
+            }
+
+            $scope.update = function() {
+                $scope.students[$scope.index] = angular.copy($scope.student);
+            }
+
+            $scope.delete = function() {
+                $scope.students.splice($scope.index, 1);
+                $scope.clear();
+            }
+
+            $scope.cancel = function() {
+                if ($scope.index == -1) {
+                    $scope.clear();
+                } else {
+                    $scope.edit($scope.index);
+                }
+            }
+
+            $scope.edit = function(index) {
+                $scope.index = index;
+                $scope.student = angular.copy($scope.students[index]);
+            }
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
