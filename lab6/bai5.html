@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Number</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Kiểm Tra Số</h3>
+                    </div>
+                    <div class="card-body">
+                        <form ng-submit="checkNumber()" novalidate>
+                            <div class="form-group">
+                                <label for="number">Nhập số:</label>
+                                <input type="number" class="form-control" id="number" ng-model="number" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Kiểm tra</button>
+                        </form>
+                        <div class="mt-3" ng-show="result !== undefined">
+                            <p class="text-center">Số {{ number }} {{ result ? 'chia hết cho cả 2 và 9' : 'không chia hết cho cả 2 và 9' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('myApp', [])
+            .controller('myCtrl', function($scope) {
+                $scope.checkNumber = function() {
+                    if ($scope.number % 2 === 0 && $scope.number % 9 === 0) {
+                        $scope.result = true;
+                    } else {
+                        $scope.result = false;
+                    }
+                };
+            });
+    </script>
+</body>
+
+</html>
