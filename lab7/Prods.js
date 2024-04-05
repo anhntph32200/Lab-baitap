@@ -1,0 +1,22 @@
+var products = [
+    { name: 'Áo thun 1', price: 20.00, discount: 10, date: '2024-01-01' },
+    { name: 'Quần jean 2', price: 35.50, discount: 15.5, date: '2024-02-15' },
+    { name: 'Giày sneaker 3', price: 50.99, discount: 20, date: '2024-03-20' },
+    { name: 'Sơ mi nam 4', price: 25.00, discount: 12, date: '2024-04-05' },
+    { name: 'Áo khoác 5', price: 40.25, discount: 18, date: '2024-05-10' },
+    { name: 'Quần kaki 6', price: 30.75, discount: 10, date: '2024-06-15' },
+    { name: 'Túi xách nữ 7', price: 60.50, discount: 25, date: '2024-07-20' },
+    { name: 'Balo học sinh 8', price: 55.00, discount: 20, date: '2024-08-25' },
+    { name: 'Giày cao gót 9', price: 45.99, discount: 15, date: '2024-09-30' },
+    { name: 'Sandal nữ 10', price: 22.50, discount: 8, date: '2024-10-05' },
+    { name: 'Áo len nam 11', price: 38.00, discount: 10, date: '2024-11-10' },
+    { name: 'Váy dạ hội 12', price: 65.75, discount: 20, date: '2024-12-15' },
+    { name: 'Túi xách nam 13', price: 70.20, discount: 15, date: '2025-01-01' },
+    { name: 'Quần lửng nữ 14', price: 27.80, discount: 10, date: '2025-02-05' },
+    { name: 'Áo sơ mi nữ 15', price: 33.99, discount: 12, date: '2025-03-10' },
+    { name: 'Bikini nữ 16', price: 28.50, discount: 10, date: '2025-04-15' },
+    { name: 'Áo thun nam 17', price: 18.75, discount: 8, date: '2025-05-20' },
+    { name: 'Quần bò nam 18', price: 42.00, discount: 15, date: '2025-06-25' },
+    { name: 'Áo khoác nữ 19', price: 47.30, discount: 18, date: '2025-07-30' },
+    { name: 'Sandal nam 20', price: 32.99, discount: 10, date: '2025-08-05' }
+];
